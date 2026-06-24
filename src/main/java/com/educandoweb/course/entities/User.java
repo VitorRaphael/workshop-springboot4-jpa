@@ -1,0 +1,81 @@
+package com.educandoweb.course.entities;
+
+import java.util.Objects;
+
+import java.io.Serializable;
+public class User implements Serializable {
+    private static final long serialVersionUID = 1L;
+
+    private Long id;
+    private String name;
+    private String email;
+    private String phone;
+    private String password;
+
+    // Construtor sem argumentos
+    public User() {
+    }
+
+    // Construtor com argumentos
+    public User(Long id, String password, String phone, String email, String name) {
+        this.id = id;
+        this.password = password;
+        this.phone = phone;
+        this.email = email;
+        this.name = name;
+    }
+
+    // Getters e Setters
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    // HashCode e Equals
+    // Como é usado para comparar, comparamos apenas pelo Id
+    @Override
+    public boolean equals(Object o) {
+        if (!(o instanceof User user)) return false;
+        return Objects.equals(id, user.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(id);
+    }
+}
