@@ -25,12 +25,12 @@ public class User implements Serializable {
     }
 
     // Construtor com argumentos
-    public User(Long id, String password, String phone, String email, String name) {
+    public User(Long id, String name, String email, String phone, String password) {
         this.id = id;
-        this.password = password;
-        this.phone = phone;
-        this.email = email;
         this.name = name;
+        this.email = email;
+        this.phone = phone;
+        this.password = password;
     }
 
     // Getters e Setters
