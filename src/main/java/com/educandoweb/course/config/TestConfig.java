@@ -3,6 +3,7 @@ package com.educandoweb.course.config;
 
 import com.educandoweb.course.entities.Order;
 import com.educandoweb.course.entities.User;
+import com.educandoweb.course.entities.enums.OrderStatus;
 import com.educandoweb.course.repositories.OrderRepository;
 import com.educandoweb.course.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,9 +32,9 @@ public class TestConfig implements CommandLineRunner {
         User u1 = new User(null, "Maria Brown", "maria@gmail.com", "9888888888", "123456");
         User u2 = new User(null, "Alex Green", "alex@gmail.com", "9777777777", "123456");
 
-        Order o1 = new Order(null, u1, Instant.parse("2019-06-20T19:53:07Z"));
-        Order o2 = new Order(null, u2, Instant.parse("2019-07-21T03:42:10Z"));
-        Order o3 = new Order(null, u1, Instant.parse("2019-07-22T15:21:22Z"));
+        Order o1 = new Order(null, u1, OrderStatus.PAID, Instant.parse("2019-06-20T19:53:07Z"));
+        Order o2 = new Order(null, u2,OrderStatus.WAITING_PAYMENT, Instant.parse("2019-07-21T03:42:10Z"));
+        Order o3 = new Order(null, u1, OrderStatus.WAITING_PAYMENT, Instant.parse("2019-07-22T15:21:22Z"));
 
         // Salvando esses dados no meu Banco de Dados
         userRepository.saveAll(Arrays.asList(u1, u2));
