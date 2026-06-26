@@ -50,11 +50,25 @@ public class OrderItem implements Serializable {
     }
 
     // Getters e Setters de quantity e price
-    public Double getPrice() { return price; }
-    public void setPrice(Double price) { this.price = price; }
+    public Double getPrice() {
+        return price;
+    }
 
-    public Integer getQuantity() { return quantity; }
-    public void setQuantity(Integer quantity) { this.quantity = quantity; }
+    public void setPrice(Double price) {
+        this.price = price;
+    }
+
+    public Integer getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
+    }
+
+    public Double getSubTotal() {
+        return price * quantity;
+    }
 
     // Equals e HashCode focados no ID composto
     @Override

@@ -79,10 +79,9 @@ public class TestConfig implements CommandLineRunner {
         // Instanciando os objetos em memória
 
         OrderItem oi1 = new OrderItem(o1, p1, p1.getPrice(), 2);
-        OrderItem oi2 = new OrderItem(o1, p3, p4.getPrice(), 1);
-        OrderItem oi3 = new OrderItem(o2, p3, p1.getPrice(), 2);
+        OrderItem oi2 = new OrderItem(o1, p3, p3.getPrice(), 1);
+        OrderItem oi3 = new OrderItem(o2, p3, p3.getPrice(), 2);
         OrderItem oi4 = new OrderItem(o3, p5, p5.getPrice(), 2);
-
         // Salvando os objetos OderItems instanciados em memória no Banco de Dados
         orderItemRepository.saveAll(Arrays.asList(oi1, oi2, oi3, oi4));
 
