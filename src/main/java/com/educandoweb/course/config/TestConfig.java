@@ -85,5 +85,10 @@ public class TestConfig implements CommandLineRunner {
 
         // Salvando os objetos OderItems instanciados em memória no Banco de Dados
         orderItemRepository.saveAll(Arrays.asList(oi1, oi2, oi3, oi4));
+
+        Payment pay1 = new Payment(null, o1, Instant.parse("2019-06-20T21:53:07Z"));
+        o1.setPayment(pay1);
+
+        orderRepository.save(o1);
     }
 }
