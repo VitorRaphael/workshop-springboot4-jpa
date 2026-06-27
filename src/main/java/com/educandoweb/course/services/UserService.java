@@ -3,10 +3,13 @@ package com.educandoweb.course.services;
 import java.util.List;
 import java.util.Optional;
 
+import com.educandoweb.course.services.exceptions.DatabaseException;
 import com.educandoweb.course.services.exceptions.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.educandoweb.course.entities.User;
 import com.educandoweb.course.repositories.UserRepository;
+import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
 // Registrando essa classe como um serviço do Spring
@@ -36,7 +39,17 @@ public class UserService {
 
     // Retorna a deleção de um usuário
     public void delete(Long id) {
-        repository.deleteById(id);
+        // 1. Primeiro verificamos se o registro existe
+        if (!repository.existsById(id)) {
+            throw new ResourceNotFoundException(id);
+        }
+
+        // 2. Tentamos deletar e tratamos a violação de integridade
+        try {
+            repository.deleteById(id);
+        } catch (DataIntegrityViolationException e) {
+            throw new DatabaseException("Integrity violation: cannot delete");
+        }
     }
 
     // Retorna a atualização de um dado usuário
